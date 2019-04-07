@@ -31,6 +31,7 @@ public class TestGetMethodTest {
     @Test
     public void testViewPositive(){
         try {
+
             this.mockMvc.perform(get("/view"))
                         .andExpect(status().isOk())
                         .andExpect(view().name("getTestView"));
@@ -143,6 +144,21 @@ public class TestGetMethodTest {
             Assert.assertTrue(result.getModelAndView().getModelMap().containsAttribute("message"));
             Assert.assertEquals("hi hello pathParam1 pathParam2",result.getModelAndView().getModel().get("message"));
             Assert.assertEquals("/combinationOfPathAndRequestParam/pathParam1/pathParam2",result.getRequest().getPathInfo());
+        } catch (Exception e) {
+            Assert.fail(e.toString());
+        }
+    }
+
+    @Test
+    public void testJson(){
+        try {
+
+            String expected="{\"fName\":\"apollo\",\"mName\":\" \",\"lName\":\"doley\",\"gender\":\"male\",\"country\":\"India\",\"hobby\":\"music\",\"userName\":\"username\",\"password\":\"password\",\"role\":\"admin\"}\n";
+            MvcResult result=this.mockMvc.perform(get("/json"))
+                        .andExpect(status().isOk())
+                        .andReturn();
+            Assert.assertNotNull(result.getResponse().getContentAsString());
+
         } catch (Exception e) {
             Assert.fail(e.toString());
         }

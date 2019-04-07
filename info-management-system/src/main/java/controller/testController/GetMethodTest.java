@@ -1,12 +1,10 @@
 package controller.testController;
 
+import model.User;
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 
 @Controller
@@ -26,7 +24,7 @@ public class GetMethodTest {
 
     /**
      * This controller is for testing GET method that return a view with a message to be displayed in view/jsp
-     * http://localhost:8080/info-management-system//model.addAttribute
+     * http://localhost:8080/info-management-system/model.addAttribute
      * @param model
      * @return view/jsp
      */
@@ -44,7 +42,7 @@ public class GetMethodTest {
      * http://localhost:8080/info-management-system/pathVariable/hi
      * @param model
      * @param pathVariable
-     * @return
+     * @return view/jsp
      */
     @RequestMapping(value="/pathVariable/{pathVariable}",method = RequestMethod.GET)
     public String pathParam(ModelMap model,@PathVariable String pathVariable)
@@ -115,11 +113,29 @@ public class GetMethodTest {
         model.addAttribute("message",requestParam1+" "+requestParam2+" "+pathParam1+" "+pathParam2);
         return "getTestGeneralPage";
     }
-//    @RequestMapping("/json")
-//    public String json()
-//    {
-//        return "index";
-//    }
+
+    /**
+     * This controller Return a json string of type User
+     * http://localhost:8080/info-management-system/json
+     * @return json
+     */
+    @RequestMapping(value = "/json",method = RequestMethod.GET)
+    @ResponseBody
+    public User json(){
+        logger.info("Entering /json controller");
+        User user=new User();
+        user.setCountry("India");
+        user.setfName("apollo");
+        user.setmName(" ");
+        user.setlName("doley");
+        user.setHobby("music");
+        user.setGender("male");
+        user.setPassword("password");
+        user.setUserName("username");
+        user.setRole("admin");
+        logger.info("Exiting /json controller");
+        return user;
+    }
 //
 //    @RequestMapping("/string")
 //    public String string()

@@ -163,4 +163,19 @@ public class TestGetMethodTest {
             Assert.fail(e.toString());
         }
     }
+
+    @Test
+    public void testStringResponse(){
+        try {
+
+            MvcResult result=this.mockMvc.perform(get("/string"))
+                    .andExpect(status().isOk())
+                    .andReturn();
+            Assert.assertNotNull(result.getResponse().getContentAsString());
+            Assert.assertEquals("sample response",result.getResponse().getContentAsString());
+
+        } catch (Exception e) {
+            Assert.fail(e.toString());
+        }
+    }
 }

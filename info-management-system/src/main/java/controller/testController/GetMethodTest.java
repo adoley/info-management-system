@@ -136,10 +136,11 @@ public class GetMethodTest {
         logger.info("Exiting /json controller");
         return user;
     }
-//
-//    @RequestMapping("/string")
-//    public String string()
-//    {
-//        return "index";
-//    }
+
+    @RequestMapping(value="/string",method = RequestMethod.GET)
+    @ResponseBody
+    public String string()
+    {
+        return "sample response";
+    }
 }

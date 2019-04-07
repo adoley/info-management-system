@@ -18,6 +18,7 @@
 
     <dependencies>
 
+        <!--Spring MVC dependencies begin-->
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-webmvc</artifactId>
@@ -29,6 +30,9 @@
             <version>3.1.0</version>
         </dependency>
 
+        <!--Spring MVC dependencies end-->
+
+        <!--Test dependencies begin-->
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
@@ -41,5 +45,15 @@
             <version>3.2.3.RELEASE</version>
             <scope>test</scope>
         </dependency>
+        <!--Test dependencies end-->
+
+        <!-- logger dependencies begin-->
+        <dependency>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+            <version>1.2.17</version>
+        </dependency>
+        <!-- logger dependencies end-->
+
     </dependencies>
 </project>

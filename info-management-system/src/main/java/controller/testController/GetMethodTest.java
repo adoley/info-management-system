@@ -1,5 +1,6 @@
 package controller.testController;
 
+import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -7,8 +8,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+
 @Controller
 public class GetMethodTest {
+    private static final Logger logger=Logger.getLogger(GetMethodTest.class.getName());
     /**
      * This controller is for testing GET method that return a view name getTestView.jsp
      * http://localhost:8080/info-management-system/view
@@ -17,6 +20,7 @@ public class GetMethodTest {
     @RequestMapping(value="/view",method = RequestMethod.GET)
     public String view()
     {
+        logger.info("Entering into view controller");
         return "getTestView";
     }
 
@@ -29,7 +33,9 @@ public class GetMethodTest {
     @RequestMapping(value="/model.addAttribute",method = RequestMethod.GET)
     public String modelAddAttribute(ModelMap model)
     {
+        logger.info("Entering into model.addAttribute controller");
         model.addAttribute("message","From model.addAttribute controller");
+        logger.info("Exiting model.addAttribute controller");
         return "getTestModelAddAttribute";
     }
 

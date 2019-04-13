@@ -2,6 +2,7 @@ package controller.testController;
 
 import model.User;
 import org.apache.log4j.Logger;
+import org.json.simple.JSONObject;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
@@ -142,5 +143,15 @@ public class GetMethodTest {
     public String string()
     {
         return "sample response";
+    }
+
+    @RequestMapping(value="/jsonString",method = RequestMethod.GET)
+    @ResponseBody
+    public JSONObject jsonString()
+    {
+       JSONObject jsonObject=new JSONObject();
+       jsonObject.put("name","apollo");
+       jsonObject.put("country","India");
+        return jsonObject;
     }
 }

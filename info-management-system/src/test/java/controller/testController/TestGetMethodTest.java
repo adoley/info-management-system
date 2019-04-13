@@ -169,11 +169,25 @@ public class TestGetMethodTest {
         try {
 
             MvcResult result=this.mockMvc.perform(get("/string"))
-                    .andExpect(status().isOk())
-                    .andReturn();
+                                        .andExpect(status().isOk())
+                                        .andReturn();
             Assert.assertNotNull(result.getResponse().getContentAsString());
             Assert.assertEquals("sample response",result.getResponse().getContentAsString());
 
+        } catch (Exception e) {
+            Assert.fail(e.toString());
+        }
+    }
+
+    @Test
+    public void testJsonString(){
+        try {
+
+            MvcResult result=this.mockMvc.perform(get("/jsonString"))
+                                        .andExpect(status().isOk())
+                                        .andReturn();
+            Assert.assertNotNull(result.getResponse().getContentAsString());
+            Assert.assertEquals("{\"country\":\"India\",\"name\":\"apollo\"}",result.getResponse().getContentAsString());
         } catch (Exception e) {
             Assert.fail(e.toString());
         }

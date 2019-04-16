@@ -149,9 +149,11 @@ public class GetMethodTest {
     @ResponseBody
     public JSONObject jsonString()
     {
+        logger.info("Entering /jsonString controller");
        JSONObject jsonObject=new JSONObject();
        jsonObject.put("name","apollo");
        jsonObject.put("country","India");
+        logger.info("Exiting /jsonString controller");
         return jsonObject;
     }
 }

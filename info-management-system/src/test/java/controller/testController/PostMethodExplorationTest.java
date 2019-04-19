@@ -132,4 +132,31 @@ public class PostMethodExplorationTest {
         }
     }
 
+    @Test
+    public void postModelTest(){
+        try {
+            JSONObject jsonObject=new JSONObject();
+            jsonObject.put("fName","apollo");
+            jsonObject.put("mName"," ");
+            jsonObject.put("lName","doley");
+            jsonObject.put("gender","male");
+            jsonObject.put("country","india");
+            jsonObject.put("hobby","cricket");
+            jsonObject.put("userName","adoley");
+            jsonObject.put("password","pass");
+            jsonObject.put("role","admin");
+            MvcResult result=this.mockMvc.perform(post("/postModel")
+                                         .contentType(MediaType.APPLICATION_JSON)
+                                         .content(jsonObject.toJSONString())
+                                        )
+                                        .andExpect(status().isOk())
+                                        .andReturn();
+            Assert.assertNotNull(result.getResponse());
+            Assert.assertNotNull(result.getResponse().getContentAsString());
+
+        } catch (Exception e) {
+            Assert.fail(e.toString());
+        }
+    }
+
 }

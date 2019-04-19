@@ -29,7 +29,7 @@ public class PostMethodExploration {
 
     /**
      * This controller return String as a response from Model3 class
-     * @return
+     * @return String
      */
     @RequestMapping(value ="/post1", method =RequestMethod.POST)
     @ResponseBody
@@ -72,7 +72,7 @@ public class PostMethodExploration {
      *
      * @param model
      * @param userDetails
-     * @return
+     * @return String
      */
     @RequestMapping(value ="/postModelAttribute", method =RequestMethod.POST)
     public String postModelAttribute(ModelMap model, @ModelAttribute("user")User userDetails){
@@ -80,5 +80,18 @@ public class PostMethodExploration {
         model.addAttribute("user",userDetails);
         logger.info("Exiting postModelAttribute controller");
         return "postTest";
+    }
+
+    /**
+     * This controller take User object as input and return User as object
+     * @param userDetails
+     * @return User
+     */
+    @RequestMapping(value ="/postModel", method =RequestMethod.POST)
+    @ResponseBody
+    public User postModel(@RequestBody User userDetails){
+        logger.info("Entering postModel controller");
+        logger.info("Exiting postModel controller");
+        return userDetails;
     }
 }

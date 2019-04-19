@@ -1,5 +1,8 @@
 package model.testModel;
 
+/**
+ * beans using XML configuration
+ */
 public class Model4 {
     private String model4Msg;
 

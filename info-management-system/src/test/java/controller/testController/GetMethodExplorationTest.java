@@ -10,20 +10,22 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
 import static org.springframework.test.web.servlet.setup.MockMvcBuilders.standaloneSetup;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @TestExecutionListeners
-public class TestGetMethodTest {
+public class GetMethodExplorationTest {
 
     protected MockMvc mockMvc;
 
     @Before
     public void setUp() {
-        Object arr[]=new Object[1];
-        arr[0]= new GetMethodTest();
+        Object arr[]=new Object[2];
+        arr[0]= new GetMethodExploration();
+        arr[1]=new PostMethodExploration();
 //      Here we need to pass all the controller that we want to test
         this.mockMvc= standaloneSetup(arr).build();
     }
@@ -192,4 +194,5 @@ public class TestGetMethodTest {
             Assert.fail(e.toString());
         }
     }
+
 }

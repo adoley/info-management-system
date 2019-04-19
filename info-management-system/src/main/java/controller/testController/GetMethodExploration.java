@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.*;
 
 
 @Controller
-public class GetMethodTest {
-    private static final Logger logger=Logger.getLogger(GetMethodTest.class.getName());
+public class GetMethodExploration {
+    private static final Logger logger=Logger.getLogger(GetMethodExploration.class.getName());
     /**
      * This controller is for testing GET method that return a view name getTestView.jsp
      * http://localhost:8080/info-management-system/view
@@ -138,6 +138,10 @@ public class GetMethodTest {
         return user;
     }
 
+    /**
+     * This controller return String as a response
+     * @return
+     */
     @RequestMapping(value="/string",method = RequestMethod.GET)
     @ResponseBody
     public String string()
@@ -145,6 +149,10 @@ public class GetMethodTest {
         return "sample response";
     }
 
+    /**
+     * This controller return json string as response
+     * @return
+     */
     @RequestMapping(value="/jsonString",method = RequestMethod.GET)
     @ResponseBody
     public JSONObject jsonString()
